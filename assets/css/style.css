@@ -1,0 +1,72 @@
+/* Index.html */
+
+.weatherbox {
+  width: 90%;
+  border-radius: 8px;
+  border: 1px solid #444;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+
+.center {
+  text-align: center;
+  margin: auto !important;
+}
+
+.right {
+  float: right;
+}
+
+footer {
+  padding: 1em;
+}
+
+.row {
+  margin-bottom: 0;
+}
+
+.spacer {
+  height: 5vh;
+}
+
+/* Navigation */
+
+header {
+
+}
+
+.nav-logo {
+  max-width: 30px;
+}
+
+#sidebar {
+    width: 20vw;
+    height: 95vh;
+    padding: 1vw;
+    transition: all 0.3s;
+}
+
+#sidebar input {
+  border: 1px solid #263238;
+  border-radius: 2px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255,255,255,1);
+}
+
+footer p {
+  margin-bottom: 0.25rem;
+}
+
+.responsive-img {
+  width: 100%;
+}
