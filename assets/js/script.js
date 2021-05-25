@@ -22,7 +22,7 @@ function loadHistory() {
 loadHistory()
 
 function getWeather() {
-  axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=5161675755ce884e1eb2f358700fff24`)
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=5161675755ce884e1eb2f358700fff24`)
     .then(res => {
       let weather = res.data
 
