@@ -28,7 +28,7 @@ function getWeather() {
 
       // Today Weatherbox
       document.getElementById('todayLocation').innerHTML = `<h1>${weather.name}</h1>`
-      document.getElementById('currentTemp').innerHTML = `<h3>` + Math.round(weather.main.temp) + ` °F</h3>`
+      document.getElementById('currentTemp').innerHTML = `<h3>${weather.main.temp} °F</h3>`
       document.getElementById('todayMinmax').innerHTML = `<span>(` + Math.round(weather.main.temp_max) + `°F / ` + Math.round(weather.main.temp_min) + `°F)</span>`
       document.getElementById('todayIcon').innerHTML = `<img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="${weather.weather[0].description}">`
       document.getElementById('todayDesc').innerHTML = `<p>${weather.weather[0].main}</p>`
