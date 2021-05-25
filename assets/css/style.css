@@ -1,11 +1,7 @@
 /* Index.html */
 
-.weatherbox {
-  width: 90%;
-  border-radius: 8px;
-  border: 1px solid #444;
-  margin: 5vh auto;
-  text-align: center;
+.hidden {
+  display: none;
 }
 
 .caps {
@@ -32,6 +28,27 @@ footer {
 
 .spacer {
   height: 5vh;
+}
+
+/* Weatherbox */
+
+.weatherbox {
+  width: 90%;
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  margin: 5vh auto;
+  text-align: center;
+  padding: 2vh 0;
+}
+
+#todayUV b {
+  color: #000;
+  padding: 0 3px;
+}
+
+#main {
+  transition: all 5s;
+  transition-timing-function: ease-in-out;
 }
 
 /* Navigation */

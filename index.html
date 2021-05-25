@@ -33,7 +33,7 @@
       <div class="nav-wrapper">
         <a href="./index.html" class="brand-logo center white-text"><i class="fas fa-cloud-sun"></i> Weather Dashboard</a>
         <ul class="left hide-on-med-and-down white-text">
-          <li><a href="http://www.github.com/diaseu/"><img src="./assets/img/ds-logo.png" alt="Logo" class="nav-logo"></a></li>
+          <li><a href="http://www.github.com/diaseu/"><img src="./assets/img/GitHub-Mark-64px.png" alt="Logo" class="nav-logo"></a></li>
         </ul>
       </div>
     </nav>
@@ -66,14 +66,26 @@
 
       </div>
       <!-- Weather Content -->
-      <div class="col m9">
-        <div id="todayWeather" class="weatherbox">
+      <div id="main" class="col m9 hidden">
+        <div id="todayWeather" class="weatherbox blue-grey darken-1 white-text">
           <div id="todayLocation">Test</div>
           <div id="todayDate"></div>
           <div id="todayIcon"></div>
-          <div id="currentTemp"></div>
           <div id="todayDesc"></div>
+          <div id="currentTemp"></div>
+          <div id="todayMinmax"></div>
+          <br />
+          <div id="todayHumidity"></div>
+          <div id="todayWind"></div>
+          <div id="todayUV"></div>
+        </div>
 
+        <div class="row">
+          <div class="col m12 center"><h2>5-day Forecast:</h2></div>
+        </div>
+        <div id="forecast" class="row">
+          <div class="weatherbox col m1"></div>
+          
         </div>
 
 
