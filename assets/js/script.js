@@ -1,17 +1,12 @@
 $('#todayDate').text(moment().format("dddd MMMM D, YYYY"))
 
-let today = moment().format("dddd MMMM D");
-let tdate0 = moment(today).add(1, 'days').format("dddd MMMM D");
-let tdate1 = moment(today).add(2, 'days');
-let tdate2 = moment(today).add(3, 'days');
-let tdate3 = moment(today).add(4, 'days');
-let tdate4 = moment(today).add(5, 'days');
+let today = moment().format("dddd MMMM D")
 
-// $("#city").keyup(function (event) {
-//   if (event.keyCode === 13) {
-//     $("#city").click();
-//   }
-// });
+$("#city").keyup(function (event) {
+  if (event.keyCode === 13) {
+    $("#search").click();
+  }
+});
 
 $('#search').click(function () {
   $('#main').removeClass("hidden", 500, "easeInBack")
@@ -68,6 +63,7 @@ $('#search').click(function () {
               <div class="weatherbox col m2 blue-grey white-text">
                 <h4>${fDate}</h4>
                 <img src="http://openweathermap.org/img/wn/${daily[i].weather[0].icon}.png" alt="${daily[i].weather[0].icon}">
+                <p>${daily[i].weather[0].main}</p>
                 <p>${daily[i].temp.day} °F  <span>(` + Math.round(daily[i].temp.max) + `°F / ` + Math.round(daily[i].temp.min) + `°F)</span></p>
                 <span>Humidity: ${daily[i].humidity}%</span>
                 <p></p>
