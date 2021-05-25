@@ -1,16 +1,28 @@
-$('#todayDate').text(moment().format("dddd MMMM D, YYYY"))
-
 let today = moment().format("dddd MMMM D")
+let searchHistory = []
+let city = document.getElementById('city').value
 
-$("#city").keyup(function (event) {
-  if (event.keyCode === 13) {
-    $("#search").click();
+function loadHistory() {
+  var searchCities = JSON.parse(localStorage.getItem("searchHistory"));
+  if (searchCities !== null) {
+    searchHistory = searchCities;
+  };
+  for (i = 0; i < searchHistory.length; i++) {
+    if (i == 8) {
+      break;
+    }
+    let cityLi = $("<li>").attr({
+      class: "collection-item",
+      href: "#"
+    })
+    cityLi.text(searchHistory[i])
+    $(".collection").prepend(cityLi)
   }
-});
+}
+loadHistory()
 
-$('#search').click(function () {
-  $('#main').removeClass("hidden", 500, "easeInBack")
-  axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${document.getElementById('city').value}&units=imperial&APPID=5161675755ce884e1eb2f358700fff24`)
+function getWeather() {
+  axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=5161675755ce884e1eb2f358700fff24`)
     .then(res => {
       let weather = res.data
 
@@ -55,10 +67,8 @@ $('#search').click(function () {
                       <div class="spacer"></div>`
           }
           let daily = data.data.daily
-          console.log(daily)
           for (i = 0; i < 5; i++) {
             let fDate = moment(today).add(i + 1, 'days').format("ddd MM/DD");
-            console.log(daily[i])
             document.getElementById('forecast').innerHTML += `
               <div class="weatherbox col m2 blue-grey white-text">
                 <h4>${fDate}</h4>
@@ -72,30 +82,45 @@ $('#search').click(function () {
           }
         })
         .catch(err => console.error(err))
-      // for (i = 0; i < 10; i++) {
-      //   let source = anime[i].attributes.posterImage.large
-      //   console.log(anime[i])
-      //   document.getElementById('anime').innerHTML += `
-      //           <div class="col s12 m4">
-      //             <div class="card">
-      //               <div class="card-image">
-      //                 <img src="${source}" alt="${anime[i].attributes.titles.en_jp}">
-      //                 <span class="card-title">${anime[i].attributes.titles.en_jp} (EN)<br />${anime[i].attributes.titles.ja_jp} (JP)</span>
-      //               </div>
-      //               <div class="card-content">
-      //                 <p>Age Rating: ${anime[i].attributes.ageRating}</p>
-      //                 <p>Rating: ${anime[i].attributes.averageRating}</p>
-      //                 <p>Status: ${anime[i].attributes.status}</p>
-      //                 <p>Number of Episodes: ${anime[i].attributes.episodeCount}</p>
-      //               </div>
-      //             </div>
-      //           </div>
-      //       `
-      // }
       document.getElementById('city').value = ''
     })
     .catch(err => console.error(err))
+}
+
+$('#search').click(function () {
+  $('#main').removeClass("hidden", 500, "easeInBack")
+  city = $("#city").val().trim()
+  getWeather()
+
+  let checkArray = searchHistory.includes(city);
+  if (checkArray == true) {
+    return
+  }
+  else {
+    searchHistory.push(city);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    cityLi = $("<li>").attr({
+      class: "collection-item",
+      href: "#"
+    })
+    cityLi.text(searchHistory[i])
+    $(".collection").prepend(cityLi)
+  }
 
 })
 
+$('.collection-item').click(function () {
+  $('#main').removeClass("hidden", 500, "easeInBack")
+  city = $(this).text()
+  console.log(city)
+  getWeather()
+})
 
+
+$('#todayDate').text(moment().format("dddd MMMM D, YYYY"))
+
+$("#city").keyup(function (event) {
+  if (event.keyCode === 13) {
+    $("#search").click();
+  }
+});
